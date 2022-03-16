@@ -26,10 +26,16 @@ public class MainController {
         modelMap.addAttribute("foods", foods);
         return "food";
     }@RequestMapping(value = "cutting/{calo}", method = RequestMethod.GET)
-    public String cutting(ModelMap modelMap) {
+    public String cutting(ModelMap modelMap, @PathVariable String calo) {
+        Iterable<Food> foods = foodRepository.findAll();
+        modelMap.addAttribute("tdee", calo);
+        modelMap.addAttribute("foods", foods);
         return "food";
     }@RequestMapping(value = "maintenance/{calo}", method = RequestMethod.GET)
-    public String maintenance(ModelMap modelMap) {
+    public String maintenance(ModelMap modelMap, @PathVariable String calo) {
+        Iterable<Food> foods = foodRepository.findAll();
+        modelMap.addAttribute("tdee", calo);
+        modelMap.addAttribute("foods", foods);
         return "food";
     }
 }
