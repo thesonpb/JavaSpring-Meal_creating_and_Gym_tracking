@@ -15,7 +15,7 @@
     <title>Food</title>
   </head>
   <body class="d-flex justify-content-center">
-    <form action="/calculator/meal/${tdee}" method="get">
+    <form action="/meal/final/${tdee}" method="get">
       <h2 class="mt-3">You need to eat ${tdee} calories per day.</h2>
       <fieldset>
         <legend>Choose your food</legend>

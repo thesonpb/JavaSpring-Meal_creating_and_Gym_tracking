@@ -3,12 +3,17 @@ package com.mealandgym.demo.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Tracking")
 public class Tracking {
     @Id
     private int id;
+    @NotNull
+    @NotBlank(message = "Name can not be null")
     private String name;
     private int week;
     private int numberOfSets;
