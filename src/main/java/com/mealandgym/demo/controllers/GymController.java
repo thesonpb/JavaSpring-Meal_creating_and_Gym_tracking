@@ -18,12 +18,14 @@ import javax.validation.Valid;
 public class GymController {
     @Autowired
     private TrackingRepository trackingRepository;
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getGym(ModelMap modelMap) {
         Iterable<Tracking> trackings = trackingRepository.findAll();
         modelMap.addAttribute("trackings", trackings);
         return "gym";
     }
+
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String addGymActivity(ModelMap modelMap,
                                  @Valid @ModelAttribute("tracking") Tracking tracking,

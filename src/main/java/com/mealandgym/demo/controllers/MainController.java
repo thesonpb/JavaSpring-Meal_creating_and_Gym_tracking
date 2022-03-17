@@ -19,19 +19,24 @@ public class MainController {
     public String main() {
         return "index";
     }
+
     @RequestMapping(value = "bulking/{calo}", method = RequestMethod.GET)
     public String bulking(ModelMap modelMap, @PathVariable String calo) {
         Iterable<Food> foods = foodRepository.findAll();
         modelMap.addAttribute("tdee", calo);
         modelMap.addAttribute("foods", foods);
         return "food";
-    }@RequestMapping(value = "cutting/{calo}", method = RequestMethod.GET)
+    }
+
+    @RequestMapping(value = "cutting/{calo}", method = RequestMethod.GET)
     public String cutting(ModelMap modelMap, @PathVariable String calo) {
         Iterable<Food> foods = foodRepository.findAll();
         modelMap.addAttribute("tdee", calo);
         modelMap.addAttribute("foods", foods);
         return "food";
-    }@RequestMapping(value = "maintenance/{calo}", method = RequestMethod.GET)
+    }
+
+    @RequestMapping(value = "maintenance/{calo}", method = RequestMethod.GET)
     public String maintenance(ModelMap modelMap, @PathVariable String calo) {
         Iterable<Food> foods = foodRepository.findAll();
         modelMap.addAttribute("tdee", calo);

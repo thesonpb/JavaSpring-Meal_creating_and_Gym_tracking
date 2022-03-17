@@ -16,10 +16,12 @@ import java.util.*;
 public class MealController {
     @Autowired
     private  FoodRepository foodRepository;
+
     @RequestMapping(value = "calculator", method = RequestMethod.GET)
     public String getCalculator() {
         return "calculator";
     }
+
     @RequestMapping(value = "tdee", method = RequestMethod.POST)
     public String calculateTdee(ModelMap modelMap, @ModelAttribute("form") Form form) {
         int age = form.getAge();
@@ -58,6 +60,7 @@ public class MealController {
         modelMap.addAttribute("tdee", tdeeFinal);
         return "tdee";
     }
+
     @RequestMapping(value = "final/{calo}", method = RequestMethod.GET)
     public String getMeal(ModelMap modelMap, @PathVariable String calo, @RequestParam(name="food") List<String> query) {
         List<Food> mealVegetable = new ArrayList<Food>();
@@ -110,6 +113,4 @@ public class MealController {
         modelMap.addAttribute("foodWeight", foodWeight);
         return "meal";
     }
-
-
 }
