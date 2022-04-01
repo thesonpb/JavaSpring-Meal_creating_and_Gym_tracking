@@ -14,7 +14,7 @@
 
     <title>Homepage</title>
   </head>
-  <body>
+  <body class="d-flex justify-content-center">
     <a class="btn btn-success m-2 mt-5" href="/meal/calculator"
       >Setup your meal</a
     >
