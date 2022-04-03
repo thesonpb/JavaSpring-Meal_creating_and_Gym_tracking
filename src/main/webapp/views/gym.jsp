@@ -15,6 +15,12 @@
     <title>Gym tracking</title>
 </head>
 <body class="p-2">
+    <div>
+        <p>
+            Welcome <b><a href="/profile/${id}">${fullName}</a></b>
+        </p>
+        
+    </div>
 <div class="d-flex justify-content-between">
 
     <input
@@ -24,8 +30,9 @@
             onclick="displayForm()"
             value="Add activity"
     ></input>
-    <a class="btn btn-success float-right" href="/meal/calculator">Setup your meal</a>
-
+    <form action="/logout" method="post">
+        <input class="btn btn-danger" type="submit" value="Sign Out" />
+    </form>
 </div>
 <h1 class="text-center mt-3 mb-3">Gym tracking</h1>
 <table class="table text-center table-bordered border-dark">

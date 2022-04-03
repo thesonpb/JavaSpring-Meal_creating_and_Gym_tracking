@@ -27,7 +27,6 @@ public class MealController {
         int age = form.getAge();
         int height = form.getHeight();
         int weight = form.getWeight();
-        System.out.println("AGE::::;"+form.getAge());
         String exerciseLevel = form.getExerciseLevel();
         String gender = form.getGender();
         double bmr;

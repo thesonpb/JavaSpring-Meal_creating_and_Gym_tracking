@@ -1,8 +1,6 @@
 package com.mealandgym.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -11,6 +9,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Tracking")
 public class Tracking {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
     @NotBlank(message = "Name can not be null")
@@ -26,9 +25,12 @@ public class Tracking {
     private int set3Rep;
     private int set4Weight;
     private int set4Rep;
-    public Tracking() {}
+    private Long userId;
 
-    public Tracking(String name, int week, int numberOfSets, int numberOfReps, int set1Weight, int set1Rep, int set2Weight, int set2Rep, int set3Weight, int set3Rep, int set4Weight, int set4Rep) {
+    public Tracking() {
+    }
+
+    public Tracking(String name, int week, int numberOfSets, int numberOfReps, int set1Weight, int set1Rep, int set2Weight, int set2Rep, int set3Weight, int set3Rep, int set4Weight, int set4Rep, Long userId) {
         this.name = name;
         this.week = week;
         this.numberOfSets = numberOfSets;
@@ -41,6 +43,7 @@ public class Tracking {
         this.set3Rep = set3Rep;
         this.set4Weight = set4Weight;
         this.set4Rep = set4Rep;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -145,5 +148,13 @@ public class Tracking {
 
     public void setSet4Rep(int set4Rep) {
         this.set4Rep = set4Rep;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
