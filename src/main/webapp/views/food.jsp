@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <%@ page
+contentType="text/html; charset=UTF-8" %>
 
 <html lang="en">
   <head>
@@ -16,8 +15,25 @@
     />
     <title>Food</title>
   </head>
-  <body class="d-flex justify-content-center">
-    <form action="/meal/final/${tdee}" method="get">
+  <body class="d-flex flex-column justify-content-center">
+    <header>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <strong>Logo here</strong>
+          </a>
+          <div class="">
+            <a class="btn btn-primary" href="/login">Login</a>
+            <a class="btn btn-secondary" href="/register">Register</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <form
+      class="d-flex flex-column align-items-center"
+      action="/meal/final/${tdee}"
+      method="get"
+    >
       <h2 class="mt-3">You need to eat ${tdee} calories per day.</h2>
       <fieldset>
         <legend>Choose your food</legend>

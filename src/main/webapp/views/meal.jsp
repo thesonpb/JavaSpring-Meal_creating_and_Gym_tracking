@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <%@ page
+contentType="text/html; charset=UTF-8" %>
 
 <html lang="en">
   <head>
@@ -16,21 +15,36 @@
     />
     <title>Meal</title>
   </head>
-  <body class="d-flex justify-content-center">
-    <div>
+  <body>
+    <header>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <strong>Logo here</strong>
+          </a>
+          <div class="">
+            <a class="btn btn-primary" href="/login">Login</a>
+            <a class="btn btn-secondary" href="/register">Register</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="d-flex flex-column align-items-center">
       <h1 class="mt-3 text-center">Your meal</h1>
       <ul class="list-group">
         <c:forEach var="food" items="${foodWeight}">
           <li
             class="list-group-item d-flex justify-content-between align-items-center"
+            style="width: 15rem"
           >
             ${food.name}
-              <span class="badge bg-warning text-dark">${food.weight}(g)</span>
+            <span class="badge bg-warning text-dark">${food.weight}(g)</span>
           </li>
         </c:forEach>
       </ul>
-      <a class="btn btn-success m-2 mt-5" href="/meal/calculator">Setup your meal</a>
-      <a class="btn btn-primary m-2 mt-5" href="/gym">Gym tracking</a>
+      <a class="btn btn-success m-2 mt-5" href="/meal/calculator"
+        >Setup your meal</a
+      >
     </div>
   </body>
 </html>

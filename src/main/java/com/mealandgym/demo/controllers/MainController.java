@@ -52,6 +52,11 @@ public class MainController {
         return "profile";
     }
 
+//    @GetMapping("/login")
+//    public String login() {
+//        return "login";
+//    }
+
     @RequestMapping(value = "bulking/{calo}", method = RequestMethod.GET)
     public String bulking(ModelMap modelMap, @PathVariable String calo) {
         Iterable<Food> foods = foodRepository.findAll();

@@ -51,9 +51,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/meal", "/register", "/process_register", "/logout").permitAll()
                 .and()
                 .formLogin()
+                .permitAll()
                 .usernameParameter("email")
                 .defaultSuccessUrl("/gym")
-                .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
     }

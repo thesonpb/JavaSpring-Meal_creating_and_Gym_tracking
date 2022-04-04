@@ -15,8 +15,21 @@
     />
     <title>TDEE</title>
   </head>
-  <body class="d-flex justify-content-center">
-    <div>
+  <body>
+    <header>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <strong>Logo here</strong>
+          </a>
+          <div class="">
+            <a class="btn btn-primary" href="/login">Login</a>
+            <a class="btn btn-secondary" href="/register">Register</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="d-flex flex-column justify-content-center align-items-center">
       <h1 class="mt-3">Your TDEE is: ${tdee}</h1>
       <div class="d-flex flex-direction-row">
         <a
