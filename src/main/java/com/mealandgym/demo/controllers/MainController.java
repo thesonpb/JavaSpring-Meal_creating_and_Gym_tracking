@@ -1,10 +1,12 @@
 package com.mealandgym.demo.controllers;
 
+import com.mealandgym.demo.CustomUserDetails;
 import com.mealandgym.demo.models.Food;
 import com.mealandgym.demo.models.User;
 import com.mealandgym.demo.repositories.FoodRepository;
 import com.mealandgym.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +22,13 @@ public class MainController {
     private UserRepository userRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String viewHomePage() {
+    public String viewHomePage(@AuthenticationPrincipal CustomUserDetails userDetails, ModelMap modelMap) {
+        if (userDetails == null) return "main";
+        User user = userRepository.findById(userDetails.getUserId()).get();
+        String id = userDetails.getUserId().toString();
+        modelMap.addAttribute("userId", id);
+        modelMap.addAttribute("loggedInUser", user);
+        modelMap.addAttribute("fullName", userDetails.getFullName());
         return "main";
     }
 
@@ -42,11 +50,13 @@ public class MainController {
     }
 
     @GetMapping("/profile/{id}")
-    public String getProfile(ModelMap modelMap, @PathVariable String id) {
+    public String getProfile(@AuthenticationPrincipal CustomUserDetails userDetails, ModelMap modelMap, @PathVariable String id) {
         User user = userRepository.findById(Long.parseLong(id)).get();
+        User loggedInUser = userRepository.findById(userDetails.getUserId()).get();
         modelMap.addAttribute("firstName", user.getFirstName());
         modelMap.addAttribute("lastName", user.getLastName());
         modelMap.addAttribute("email", user.getEmail());
+        modelMap.addAttribute("loggedInUser", loggedInUser);
 
         //gender, age, weight, height, exercise level
         return "profile";

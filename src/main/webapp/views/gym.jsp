@@ -14,9 +14,28 @@
     />
     <title>Gym tracking</title>
 </head>
-<body class="p-2">
+<body>
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+          <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+              <strong>Logo here</strong>
+            </a>
+            <div class="">
+                <a href="/profile/${id}" class="btn btn-dark">
+                <img style="vertical-align: middle;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt="">
+                <b>${fullName}</b>
+              </a>
+                <a class="btn btn-danger" href="/logout">Log out</a>
+            </div>
+          </div>
+        </div>
+      </header>
     <div>
-        <p>
+        <p class="m-2">
             Welcome <b><a href="/profile/${id}">${fullName}</a></b>
         </p>
         
@@ -26,16 +45,13 @@
     <input
             type="button"
             id="button"
-            class="btn btn-primary"
+            class="btn btn-primary m-2"
             onclick="displayForm()"
             value="Add activity"
     ></input>
-    <form action="/logout" method="post">
-        <input class="btn btn-danger" type="submit" value="Sign Out" />
-    </form>
 </div>
 <h1 class="text-center mt-3 mb-3">Gym tracking</h1>
-<table class="table text-center table-bordered border-dark">
+<table class="m-2 table text-center table-bordered border-dark">
     <tr class="table-active">
         <th rowspan="2">Name</th>
         <th rowspan="2">Week</th>

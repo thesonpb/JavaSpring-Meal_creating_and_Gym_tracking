@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -44,16 +45,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/gym").authenticated()
+                .antMatchers("/gym", "/profile").authenticated()
                 .antMatchers("/meal", "/register", "/process_register", "/logout").permitAll()
                 .and()
                 .formLogin()
                 .permitAll()
                 .usernameParameter("email")
-                .defaultSuccessUrl("/gym")
+                .defaultSuccessUrl("/")
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
     }

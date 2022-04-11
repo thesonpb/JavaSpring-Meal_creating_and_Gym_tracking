@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <%@ page
+contentType="text/html; charset=UTF-8" %>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -34,8 +36,20 @@
             <strong>Logo here</strong>
           </a>
           <div class="">
-            <a class="btn btn-primary" href="/login">Login</a>
-            <a class="btn btn-secondary" href="/register">Register</a>
+            <c:if test="${not empty loggedInUser}">
+              <a href="/profile/${userId}" class="btn btn-dark">
+              <img style="vertical-align: middle;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt="">
+              <b>${fullName}</b>
+            </a>
+              <a class="btn btn-danger" href="/logout">Log out</a>
+            </c:if>
+            <c:if test="${empty loggedInUser}">
+              <a class="btn btn-primary" href="/login">Login</a>
+              <a class="btn btn-secondary" href="/register">Register</a>
+            </c:if>
           </div>
         </div>
       </div>
@@ -53,6 +67,9 @@
           <p>
             <a class="col-4 btn btn-primary m-2 mt-5" href="/meal/calculator"
               >Setup your meal</a
+            >
+            <a class="col-4 btn btn-success m-2 mt-5" href="/gym"
+              >Gym tracking</a
             >
           </p>
         </div>
